@@ -41,7 +41,7 @@ $dataCate = $stmt->fetchAll();
 					<!-- Danh sach danh muc -->
 					<?php foreach ($dataCate as $c): ?>
 						<li>
-							<a href="cate?id=<?= $c['id']?>"><?= $c['name']?></a>
+							<a href="danhmuc.php?id=<?= $c['id']?>"><?= $c['name']?></a>
 						</li>
 					<?php endforeach ?>
 						<li>
