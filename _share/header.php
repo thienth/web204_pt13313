@@ -33,10 +33,10 @@ $dataCate = $stmt->fetchAll();
 			<div class="header-menu col-md-12">
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="index.html">Trang chủ</a>
+						<a href="<?= $siteUrl?>">Trang chủ</a>
 					</li>
 					<li>
-						<a href="gioithieu.html">Giới thiệu</a>
+						<a href="<?= $siteUrl?>gioithieu.php">Giới thiệu</a>
 					</li>
 					<!-- Danh sach danh muc -->
 					<?php foreach ($dataCate as $c): ?>
@@ -45,7 +45,7 @@ $dataCate = $stmt->fetchAll();
 						</li>
 					<?php endforeach ?>
 						<li>
-							<a href="liên hệ.html">Liên hệ</a>
+							<a href="<?= $siteUrl?>lienhe.php">Liên hệ</a>
 						</li>
 					</ul>
 					<!-- <form class="navbar-form navbar-left">
