@@ -3,7 +3,10 @@ require_once './commons/utils.php';
 $id = $_GET['id'];
 
 // 1. Kiem tra xem id danh muc co thuc su ton tai khong
-$sql = "select * from " . TABLE_CATEGORY . " 
+$sql = "select 
+				c.*,
+				(select count(*) from products where cate_id = $id) as total_product
+		from ".TABLE_CATEGORY." c
 		where id = $id";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -13,14 +16,17 @@ if(!$cate){
 	die;
 }
 
+$pageNumber = isset($_GET['page']) == true ? $_GET['page'] : 1;
+$pageSize = 5;
+$offset = ($pageNumber-1)*$pageSize;
+
 // 2. lay danh sach san pham thuoc danh muc
 $sql = "select * from " . TABLE_PRODUCT 
-		. " where cate_id = $id";
+		. " where cate_id = $id limit $offset, $pageSize";
 
 $stmt = $conn->prepare($sql);
 $stmt->execute();
-$products = $stmt->fetchAll();	
-
+$products = $stmt->fetchAll();
  ?>
 
 <!DOCTYPE html>
@@ -43,28 +49,33 @@ $products = $stmt->fetchAll();
 			<div class="tittle-product">
 				<h2><?= $cate['name']?></h2>
 			</div>
-			<?php foreach ($products as $np): ?>
-				<div class="col-sm-4 col-xs-12">
-					<div class="img-height">
-						<img src="<?= $siteUrl . $np['image']?>" alt="">
-					</div>
-					<a class="title-name"><?= $np['product_name']?></a>
-					<div class="text-center">
-						Giá bán <a class="">
-							<strike>
-								<?= $np['list_price']?>Đ
-							</strike>
-							</a>
-						<br>
-						Giá khuyến mại <a class=""><?= $np['sell_price']?>Đ</a>
-					</div>
+			<div class="row">
+				<?php foreach ($products as $np): ?>
+					<div class="col-sm-4 col-xs-12">
+						<div class="img-height">
+							<img src="<?= $siteUrl . $np['image']?>" alt="">
+						</div>
+						<a class="title-name"><?= $np['product_name']?></a>
+						<div class="text-center">
+							Giá bán <a class="">
+								<strike>
+									<?= $np['list_price']?>Đ
+								</strike>
+								</a>
+							<br>
+							Giá khuyến mại <a class=""><?= $np['sell_price']?>Đ</a>
+						</div>
 
-					<div class="footer-product">
-						<a href="#" class="details">Xem chi tiết</a>
-						<a href="#" class="buying">Mua hàng</a>
+						<div class="footer-product">
+							<a href="#" class="details">Xem chi tiết</a>
+							<a href="#" class="buying">Mua hàng</a>
+						</div>
 					</div>
-				</div>
-			<?php endforeach ?>
+				<?php endforeach ?>
+			</div>
+			<div class="row">
+				<div class="paginate "></div>
+			</div>
 		</div>
 	</div>
 	<div id="partner">
@@ -87,6 +98,18 @@ $products = $stmt->fetchAll();
 	<?php 
 	include './_share/footer.php';
 	 ?>
+	 <script type="text/javascript">
+	 	var pageUrl = '<?= $siteUrl. "danhmuc.php?id=" . $id?>';
+	 	$('.paginate').pagination({
+	        items: <?=$cate['total_product']?>,
+	        currentPage: <?= $pageNumber?>, 
+	        itemsOnPage: <?= $pageSize?>,
+	        cssStyle: 'light-theme',
+	        onPageClick: function(val){
+	        	window.location.href = pageUrl+`&page=${val}`;
+	        }
+	    });
+	 </script>
 </body>
 
 </html>
