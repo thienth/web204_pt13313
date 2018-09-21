@@ -67,14 +67,13 @@ $products = $stmt->fetchAll();
 						</div>
 
 						<div class="footer-product">
-							<a href="#" class="details">Xem chi tiết</a>
-							<a href="#" class="buying">Mua hàng</a>
+							<a href="<?= $siteUrl?>chitiet.php?id=<?=$np['id']?>" class="details">Xem chi tiết</a>
 						</div>
 					</div>
 				<?php endforeach ?>
 			</div>
 			<div class="row">
-				<div class="paginate "></div>
+				<div class="paginate"></div>
 			</div>
 		</div>
 	</div>

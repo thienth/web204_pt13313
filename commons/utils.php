@@ -14,6 +14,7 @@ define('TABLE_CATEGORY', 'categories');
 define('TABLE_SLIDESHOW', 'slideshows');
 define('TABLE_PRODUCT', 'products');
 define('TABLE_WEBSETTING', 'web_settings');
+define('TABLE_COMMENT', 'comments');
 
 
 
