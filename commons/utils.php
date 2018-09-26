@@ -10,6 +10,10 @@ $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8",
 // website base url
 $siteUrl = 'http://localhost/pt13313/';
 
+// admin site
+$adminUrl = 'http://localhost/pt13313/admin/';
+$adminAssetUrl = 'http://localhost/pt13313/admin/adminlte/';
+
 define('TABLE_CATEGORY', 'categories');
 define('TABLE_SLIDESHOW', 'slideshows');
 define('TABLE_PRODUCT', 'products');
