@@ -1,5 +1,5 @@
 <?php 
-require_once '../commons/utils.php';
+require_once $path.'../commons/utils.php';
 
  ?>
 

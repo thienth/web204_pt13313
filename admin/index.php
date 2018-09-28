@@ -1,4 +1,5 @@
 <?php 
+$path = "";
 require_once '../commons/utils.php';
 // dem ton so record trong bang danh muc
 $sql = "select count(*) as total from " . TABLE_CATEGORY;
