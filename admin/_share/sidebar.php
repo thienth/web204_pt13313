@@ -31,15 +31,15 @@ require_once '../commons/utils.php';
       <li class="header">MAIN NAVIGATION</li>
       <li class="treeview">
         <a href="#">
-          <i class="mục"></i> <span>Dashboard</span>
+          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
           <li class="">
-            <a href="index.html">
-              <i class="fa fa-circle-o"></i> Dashboard v1
+            <a href="<?= $adminUrl?>">
+              <i class="fa fa-circle-o"></i> Trang quản trị
             </a>
           </li>
         </ul>

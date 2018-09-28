@@ -20,6 +20,11 @@ define('TABLE_PRODUCT', 'products');
 define('TABLE_WEBSETTING', 'web_settings');
 define('TABLE_COMMENT', 'comments');
 
+function dd($var){
+	echo "<pre>";
+	var_dump($var);
+	die;
+}
 
 
  ?>
