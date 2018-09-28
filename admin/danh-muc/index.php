@@ -59,7 +59,7 @@ $cates = $stmt->fetchAll();
 	                  <th>Tên danh mục</th>
 	                  <th style="width: 80px">Sản phẩm</th>
 	                  <th style="width: 240px">Mô tả</th>
-	                  <th >
+	                  <th style="width: 135px;">
 	                  	<a href="<?= $adminUrl?>danh-muc/add.php"
                   			class="btn btn-xs btn-success"
 	                  		>
