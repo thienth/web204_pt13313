@@ -49,9 +49,63 @@ $cates = $stmt->fetchAll();
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        
+        <div class="col-xs-12">
+        	<div class="box">
+	            <div class="box-body">
+	              <table class="table table-bordered">
+	                <tbody>
+                	<tr>
+	                  <th style="width: 10px">Id</th>
+	                  <th>Tên danh mục</th>
+	                  <th style="width: 80px">Sản phẩm</th>
+	                  <th style="width: 240px">Mô tả</th>
+	                  <th >
+	                  	<a href="<?= $adminUrl?>danh-muc/add.php"
+                  			class="btn btn-xs btn-success"
+	                  		>
+	                  		<i class="fa fa-plus"></i> Thêm mới
+	                  	</a>
+	                  </th>
+	                </tr>
+	                <?php foreach ($cates as $c): ?>
+	                	
+		                <tr>
+		                  <td><?= $c['id']?></td>
+		                  <td><?= $c['name']?></td>
+		                  <td>
+		                    <?= $c['totalProduct']?>
+		                  </td>
+		                  <td><?= $c['desc']?></td>
+		                  <td>
+		                  	<a href="<?= $adminUrl?>danh-muc/edit.php?id=<?= $c['id']?>"
+                  			class="btn btn-xs btn-info"
+	                  		>
+	                  			<i class="fa fa-pencil"></i> Cập nhật
+	                  		</a>
+		                  	<a href="<?= $adminUrl?>danh-muc/remove.php?id=<?= $c['id']?>"
+                  			class="btn btn-xs btn-danger"
+	                  		>
+	                  			<i class="fa fa-trash"></i> Xoá
+	                  		</a>
+		                  </td>
+		                </tr>
+	                <?php endforeach ?>
+	              </tbody>
+	          	  </table>
+	            </div>
+	            <!-- /.box-body -->
+	            <div class="box-footer clearfix">
+	              <ul class="pagination pagination-sm no-margin pull-right">
+	                <li><a href="#">«</a></li>
+	                <li><a href="#">1</a></li>
+	                <li><a href="#">2</a></li>
+	                <li><a href="#">3</a></li>
+	                <li><a href="#">»</a></li>
+	              </ul>
+	            </div>
+          </div>
+        </div>
       </div>
-
     </section>
     <!-- /.content -->
   </div>
