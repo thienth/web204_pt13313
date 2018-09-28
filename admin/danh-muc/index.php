@@ -8,7 +8,7 @@ $sql = "select
 			count(p.id) as totalProduct
 		from  ". TABLE_CATEGORY ." c
 		join ". TABLE_PRODUCT ." p
-		on c.id = p.cate_id
+			on c.id = p.cate_id
 		group by c.id";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -38,11 +38,11 @@ $cates = $stmt->fetchAll();
     <section class="content-header">
       <h1>
         Dashboard
-        <small>Control panel</small>
+        <small>Quản lý danh mục</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="<?= $adminUrl?>"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Danh mục</li>
       </ol>
     </section>
 
