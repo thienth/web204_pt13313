@@ -82,8 +82,9 @@ $cates = $stmt->fetchAll();
 	                  		>
 	                  			<i class="fa fa-pencil"></i> Cập nhật
 	                  		</a>
-		                  	<a href="<?= $adminUrl?>danh-muc/remove.php?id=<?= $c['id']?>"
-                  			class="btn btn-xs btn-danger"
+		                  	<a href="javascript:;"
+		                  		linkurl="<?= $adminUrl?>danh-muc/remove.php?id=<?= $c['id']?>"
+                  				class="btn btn-xs btn-danger btn-remove"
 	                  		>
 	                  			<i class="fa fa-trash"></i> Xoá
 	                  		</a>
@@ -116,5 +117,26 @@ $cates = $stmt->fetchAll();
 <!-- ./wrapper -->
 <?php include_once $path.'_share/bottom_asset.php'; ?>  
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+	$('.btn-remove').on('click', function(){
+
+		var removeUrl = $(this).attr('linkurl');
+		swal({
+		  title: "Cảnh báo",
+		  text: "Bạn có chắc chắn muốn xoá danh mục này không?",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+		    window.location.href = removeUrl;
+		  } 
+		});
+	});
+
+</script>
 </body>
 </html>

@@ -33,6 +33,7 @@ require_once $path.'../commons/utils.php';
 <script src="<?= $adminAssetUrl?>bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="<?= $adminAssetUrl?>bower_components/fastclick/lib/fastclick.js"></script>
+
 <!-- AdminLTE App -->
 <script src="<?= $adminAssetUrl?>dist/js/adminlte.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
