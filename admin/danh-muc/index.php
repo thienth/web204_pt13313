@@ -10,7 +10,6 @@ $sql = "select
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $cates = $stmt->fetchAll();
-// dd($cates);
  ?>
 <!DOCTYPE html>
 <html>
