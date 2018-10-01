@@ -5,11 +5,8 @@ require_once $path.$path."commons/utils.php";
 // dem ton so record trong bang danh muc
 $sql = "select 
 			c.*,
-			count(p.id) as totalProduct
-		from  ". TABLE_CATEGORY ." c
-		join ". TABLE_PRODUCT ." p
-			on c.id = p.cate_id
-		group by c.id";
+			(select count(*) from ".TABLE_PRODUCT." where cate_id = c.id) as totalProduct
+		from ".TABLE_CATEGORY." c";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $cates = $stmt->fetchAll();
@@ -123,6 +120,10 @@ $cates = $stmt->fetchAll();
 	$('.btn-remove').on('click', function(){
 
 		var removeUrl = $(this).attr('linkurl');
+		// var conf = confirm('Bạn có chắc chắn muốn xoá danh mục này không?');
+		// if(conf){
+		// 	window.location.href = removeUrl;
+		// }
 		swal({
 		  title: "Cảnh báo",
 		  text: "Bạn có chắc chắn muốn xoá danh mục này không?",
