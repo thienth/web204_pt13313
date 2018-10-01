@@ -1,5 +1,6 @@
 <?php 
 // hien thi danh sach danh muc cua he thong
+
 $path = "../";
 require_once $path.$path."commons/utils.php";
 // dem ton so record trong bang danh muc
@@ -116,6 +117,13 @@ $cates = $stmt->fetchAll();
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script type="text/javascript">
+	<?php 
+	if(isset($_GET['success']) && $_GET['success'] == 'true'){
+		?>
+		swal('Thêm danh mục thành công!');
+	<?php
+	}
+	 ?>
 	$('.btn-remove').on('click', function(){
 
 		var removeUrl = $(this).attr('linkurl');

@@ -44,6 +44,11 @@ require_once $path.$path."commons/utils.php";
             <div class="form-group">
               <label>Tên danh mục</label>
               <input type="text" name="name" class="form-control">
+              <?php 
+              if(isset($_GET['errName']) && $_GET['errName'] != ""){
+               ?>
+               <span class="text-danger"><?= $_GET['errName'] ?></span>
+              <?php } ?>
             </div>
             <div class="form-group">
               <label>Mô tả</label>
