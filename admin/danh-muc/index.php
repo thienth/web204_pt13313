@@ -72,7 +72,7 @@ $cates = $stmt->fetchAll();
 		                  <td>
 		                    <?= $c['totalProduct']?>
 		                  </td>
-		                  <td><?= $c['desc']?></td>
+		                  <td><?= $c['description']?></td>
 		                  <td>
 		                  	<a href="<?= $adminUrl?>danh-muc/edit.php?id=<?= $c['id']?>"
                   			class="btn btn-xs btn-info"
