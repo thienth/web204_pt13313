@@ -45,7 +45,7 @@ $cates = $stmt->fetchAll();
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <form action="<?= $adminUrl?>/san-pham/save-add.php" method="post">
+        <form enctype="multipart/form-data" action="<?= $adminUrl?>/san-pham/save-add.php" method="post" >
           <div class="col-md-6">
             <div class="form-group">
               <label>Tên sản phẩm</label>
@@ -56,7 +56,7 @@ $cates = $stmt->fetchAll();
               <select name="cate_id" class="form-control">
                 <?php foreach ($cates as $c): ?>
                   <option 
-                    value="<?= $c['name']?>" 
+                    value="<?= $c['id']?>" 
                   ><?= $c['name']?></option>
                 <?php endforeach ?>
               </select>
@@ -73,7 +73,7 @@ $cates = $stmt->fetchAll();
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6 col-md-offset-3">
-                <img id="imageTarget" src="<?= $siteUrl?>/img/default/default-picture.jpg" class="img-responsive" >
+                <img id="imageTarget" src="<?= $siteUrl?>img/default/default-picture.jpg" class="img-responsive" >
               </div>
             </div>
             <div class="form-group">
@@ -112,7 +112,6 @@ $cates = $stmt->fetchAll();
      reader.readAsDataURL(file);
      reader.onload = function () {
       $(selector).attr('src', reader.result);
-       // return reader.result;
      };
      reader.onerror = function (error) {
        console.log('Error: ', error);
@@ -122,7 +121,11 @@ $cates = $stmt->fetchAll();
   var img = document.querySelector('#product_image');
   img.onchange = function(){
     var file = this.files[0];
-    getBase64(file, '#imageTarget');
+    if(file == undefined){
+      $('#imageTarget').attr('src', "<?= $siteUrl ?>img/default/default-picture.jpg");
+    }else{
+      getBase64(file, '#imageTarget');
+    }
   }
 
 
