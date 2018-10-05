@@ -1,13 +1,6 @@
 <?php 
 // // tao ket noi den csdl
 require_once './commons/utils.php';
-
-
-
-// echo "<pre>";
-// var_dump($dataCate);
-// 
-// var_dump($dataSlides);
 // lay du lieu tu csdl bang products cho sp moi
 $newProductsQuery = "	select * 
 						from ".TABLE_PRODUCT." 

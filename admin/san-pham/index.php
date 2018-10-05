@@ -4,15 +4,15 @@ $path = "../";
 require_once $path.$path."commons/utils.php";
 // dem ton so record trong bang danh muc
 $sql = "select 
-			c.*,
-			count(p.id) as totalProduct
-		from  ". TABLE_CATEGORY ." c
-		join ". TABLE_PRODUCT ." p
-			on c.id = p.cate_id
-		group by c.id";
+          p.*,
+          c.name as catename
+        from products p
+        join categories c
+          on p.cate_id = c.id
+        ";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
-$cates = $stmt->fetchAll();
+$products = $stmt->fetchAll();
 // dd($cates);
  ?>
 <!DOCTYPE html>
@@ -49,6 +49,77 @@ $cates = $stmt->fetchAll();
     <!-- Main content -->
     <section class="content">
       <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+              <div class="box-body">
+                <table class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <th style="width: 10px">Id</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Danh mục</th>
+                    <th style="width: 100px">Ảnh</th>
+                    <th>Giá bán</th>
+                    <th>Giá khuyến mại</th>
+                    <th>Lượt view</th>
+                    <th style="width: 135px;">
+                      <a href="<?= $adminUrl?>san-pham/add.php"
+                        class="btn btn-xs btn-success"
+                        >
+                        <i class="fa fa-plus"></i> Thêm mới
+                      </a>
+                    </th>
+                  </tr>
+                  <?php foreach ($products as $p): ?>
+                    
+                    <tr>
+                      <td><?= $p['id']?></td>
+                      <td><?= $p['product_name']?></td>
+                      <td>
+                        <?= $p['catename']?>
+                      </td>
+                      <td>
+                        <img id="imageTarget" src="<?= $siteUrl . $p['image']?>" class="img-responsive" >
+                      </td>
+                      <td>
+                        <?= $p['list_price']?>
+                      </td>
+                      <td>
+                        <?= $p['sell_price']?>
+                      </td>
+                      <td>
+                        <?= $p['views']?>
+                      </td>
+                      <td>
+                        <a href="<?= $adminUrl?>san-pham/edit.php?id=<?= $p['id']?>"
+                        class="btn btn-xs btn-info"
+                        >
+                          <i class="fa fa-pencil"></i> Cập nhật
+                        </a>
+                        <a href="javascript:;"
+                          linkurl="<?= $adminUrl?>san-pham/remove.php?id=<?= $p['id']?>"
+                          class="btn btn-xs btn-danger btn-remove"
+                        >
+                          <i class="fa fa-trash"></i> Xoá
+                        </a>
+                      </td>
+                    </tr>
+                  <?php endforeach ?>
+                </tbody>
+                </table>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                  <li><a href="#">«</a></li>
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">»</a></li>
+                </ul>
+              </div>
+          </div>
+        </div>
         
       </div>
     </section>
