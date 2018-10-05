@@ -54,10 +54,11 @@ $cates = $stmt->fetchAll();
             <div class="form-group">
               <label>Danh mục</label>
               <select name="cate_id" class="form-control">
-                <option>Banh keo</option>
-                <option>Banh keo</option>
-                <option>Banh keo</option>
-                <option>Banh keo</option>
+                <?php foreach ($cates as $c): ?>
+                  <option 
+                    value="<?= $c['name']?>" 
+                  ><?= $c['name']?></option>
+                <?php endforeach ?>
               </select>
             </div>
             <div class="form-group">
@@ -72,18 +73,18 @@ $cates = $stmt->fetchAll();
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-6 col-md-offset-3">
-                <img src="<?= $siteUrl?>/img/default/default-picture.jpg" class="img-responsive" >
+                <img id="imageTarget" src="<?= $siteUrl?>/img/default/default-picture.jpg" class="img-responsive" >
               </div>
             </div>
             <div class="form-group">
               <label>Ảnh sản phẩm</label>
-              <input type="file" name="image" class="form-control">
+              <input type="file" id="product_image" name="image" class="form-control">
             </div>
           </div>
           <div class="col-md-12">
             <div class="form-group">
               <label>Mô tả</label>
-              <textarea rows="5" class="form-control" name="detail"></textarea>
+              <textarea id="editor" rows="5" class="form-control" name="detail"></textarea>
             </div>
           </div>
           <div class="col-md-12 text-right">
@@ -101,6 +102,30 @@ $cates = $stmt->fetchAll();
 </div>
 <!-- ./wrapper -->
 <?php include_once $path.'_share/bottom_asset.php'; ?>  
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#editor').wysihtml5();
+  });
 
+  function getBase64(file, selector) {
+     var reader = new FileReader();
+     reader.readAsDataURL(file);
+     reader.onload = function () {
+      $(selector).attr('src', reader.result);
+       // return reader.result;
+     };
+     reader.onerror = function (error) {
+       console.log('Error: ', error);
+     };
+  }
+
+  var img = document.querySelector('#product_image');
+  img.onchange = function(){
+    var file = this.files[0];
+    getBase64(file, '#imageTarget');
+  }
+
+
+</script>
 </body>
 </html>
