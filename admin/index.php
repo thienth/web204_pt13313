@@ -1,6 +1,12 @@
 <?php 
+session_start();
+
 $path = "";
 require_once '../commons/utils.php';
+if(!isset($_SESSION['login']) || $_SESSION['login'] == null){
+  header('location: '.$siteUrl . 'login.php');
+  die;
+}
 // dem ton so record trong bang danh muc
 $sql = "select count(*) as total from " . TABLE_CATEGORY;
 $stmt = $conn->prepare($sql);
