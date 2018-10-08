@@ -27,6 +27,7 @@ function dd($var){
 }
 
 function checkLogin(){
+	global $siteUrl;
 	if(!isset($_SESSION['login']) || $_SESSION['login'] == null){
 	  header('location: '.$siteUrl . 'login.php');
 	  die;
