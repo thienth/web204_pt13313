@@ -1,5 +1,7 @@
 <?php 
+session_start();
 require_once '../../commons/utils.php';
+checkLogin();
 $cateId = $_GET['id'];
 
 $sql = "select * from ".TABLE_CATEGORY." where id = $cateId";

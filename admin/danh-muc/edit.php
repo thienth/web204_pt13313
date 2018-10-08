@@ -1,7 +1,9 @@
 <?php 
+session_start();
 // hien thi danh sach danh muc cua he thong
 $path = "../";
 require_once $path.$path."commons/utils.php";
+checkLogin();
 $cateId = $_GET['id'];
 $sql = "select * from " . TABLE_CATEGORY . " where id = $cateId";
 $stmt = $conn->prepare($sql);

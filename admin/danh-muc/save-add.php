@@ -1,5 +1,7 @@
 <?php 
+session_start();
 require_once '../../commons/utils.php';
+checkLogin();
 if($_SERVER['REQUEST_METHOD'] != 'POST'){
 	header('location: ' . $adminUrl . 'danh-muc');
 	die;

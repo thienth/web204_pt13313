@@ -1,8 +1,9 @@
 <?php 
 // hien thi danh sach danh muc cua he thong
-
+session_start();
 $path = "../";
 require_once $path.$path."commons/utils.php";
+checkLogin();
 // dem ton so record trong bang danh muc
 $sql = "select 
 			c.*,

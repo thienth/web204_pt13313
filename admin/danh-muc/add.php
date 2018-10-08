@@ -1,7 +1,9 @@
 <?php 
+session_start();
 // hien thi danh sach danh muc cua he thong
 $path = "../";
 require_once $path.$path."commons/utils.php";
+checkLogin();
 // dem ton so record trong bang danh muc
 
  ?>

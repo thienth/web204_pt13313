@@ -26,5 +26,12 @@ function dd($var){
 	die;
 }
 
+function checkLogin(){
+	if(!isset($_SESSION['login']) || $_SESSION['login'] == null){
+	  header('location: '.$siteUrl . 'login.php');
+	  die;
+	}
+}
+
 
  ?>
