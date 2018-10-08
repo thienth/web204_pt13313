@@ -31,24 +31,8 @@ require_once $path.'../commons/utils.php';
 	            <img src="<?= $adminAssetUrl?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
 	            <p>
-	              Alexander Pierce - Web Developer
-	              <small>Member since Nov. 2012</small>
+	              <?= $_SESSION['login']['email'] ?>
 	            </p>
-	          </li>
-	          <!-- Menu Body -->
-	          <li class="user-body">
-	            <div class="row">
-	              <div class="col-xs-4 text-center">
-	                <a href="#">Followers</a>
-	              </div>
-	              <div class="col-xs-4 text-center">
-	                <a href="#">Sales</a>
-	              </div>
-	              <div class="col-xs-4 text-center">
-	                <a href="#">Friends</a>
-	              </div>
-	            </div>
-	            <!-- /.row -->
 	          </li>
 	          <!-- Menu Footer-->
 	          <li class="user-footer">
