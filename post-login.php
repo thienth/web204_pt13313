@@ -12,14 +12,18 @@ $password = $_POST['password'];
 
 $sql = "select * 
 		from users
-		where email = '$email'
-			and password = '$password'";
+		where email = '$email'";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $user = $stmt->fetch();
 
 if(!$user){
-	header('location: '. $siteUrl . 'login.php?msg=Sai email/mật khẩu!');
+	header('location: '. $siteUrl . 'login.php?msg=Sai email không tồn tại!');
+	die;
+}
+
+if(!password_verify($password, $user['password'])){
+	header('location: '. $siteUrl . 'login.php?msg=Sai mật khẩu');
 	die;
 }
 
