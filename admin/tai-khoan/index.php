@@ -1,7 +1,9 @@
 <?php 
+session_start();
 // hien thi danh sach danh muc cua he thong
 $path = "../";
 require_once $path.$path."commons/utils.php";
+checkLogin(USER_ROLES['admin']);
 // dem ton so record trong bang danh muc
 $sql = "select * from users";
 $stmt = $conn->prepare($sql);
@@ -65,6 +67,8 @@ $users = $stmt->fetchAll();
                 <td>
                   <?php if ($u['role'] == USER_ROLES['admin']): ?>
                     <span>Quản trị</span>  
+                  <?php elseif($u['role'] == USER_ROLES['moderator']): ?>
+                    <span>Quản trị viên</span> 
                   <?php else: ?>
                     <span>Thành viên</span>  
                   <?php endif ?>

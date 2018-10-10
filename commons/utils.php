@@ -22,6 +22,7 @@ define('TABLE_COMMENT', 'comments');
 
 const USER_ROLES = [
 	'admin' => 500,
+	'moderator' => 300,
 	'member' => 1
 ];
 
@@ -31,9 +32,11 @@ function dd($var){
 	die;
 }
 
-function checkLogin(){
+function checkLogin($role = 300){
 	global $siteUrl;
-	if(!isset($_SESSION['login']) || $_SESSION['login'] == null){
+	if(!isset($_SESSION['login']) 
+		|| $_SESSION['login'] == null
+		|| $_SESSION['login']['role'] < $role){
 	  header('location: '.$siteUrl . 'login.php');
 	  die;
 	}
