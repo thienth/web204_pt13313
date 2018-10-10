@@ -61,7 +61,7 @@ checkLogin(USER_ROLES['admin']);
               <label>Quyền</label>
               <select name="role" class="form-control">
                 <?php foreach (USER_ROLES as $key => $value): ?>
-                  <option value="<?php $value ?>"><?= $key ?></option>
+                  <option value="<?= $value ?>"><?= $key ?></option>
                 <?php endforeach ?>
               </select>
             </div>
