@@ -123,12 +123,12 @@ require_once $path.'../commons/utils.php';
         </a>
         <ul class="treeview-menu">
           <li class="">
-            <a href="index.html">
+            <a href="<?= $adminUrl ?>tai-khoan">
               <i class="fa fa-list"></i> Danh sách
             </a>
           </li>
           <li class="">
-            <a href="index.html">
+            <a href="<?= $adminUrl ?>tai-khoan/add.php">
               <i class="fa fa-user-plus"></i> Tạo tài khoản
             </a>
           </li>

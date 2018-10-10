@@ -20,6 +20,11 @@ define('TABLE_PRODUCT', 'products');
 define('TABLE_WEBSETTING', 'web_settings');
 define('TABLE_COMMENT', 'comments');
 
+const USER_ROLES = [
+	'admin' => 500,
+	'member' => 1
+];
+
 function dd($var){
 	echo "<pre>";
 	var_dump($var);
